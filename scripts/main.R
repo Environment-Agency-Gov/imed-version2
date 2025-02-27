@@ -64,9 +64,11 @@
 
 # selecting clear_all = T will remove all objects
 # selecting clear_all = F will remove all objects except the ONSPD
-clear_all = FALSE
+clear_all = TRUE
 source("scripts/set-up.R")
+
 # Load ONSPD (approx 45-60secs)
+# Note: This is needed if wanted to add geography columns to imed data set
 load_onspd = FALSE
 source("scripts/onspd.R")
 
@@ -87,7 +89,7 @@ imed_lsoa <- make_imed_lsoa(ap_wgt = 1,
                             nature_wgt = 1,
                             climate_wgt = 1,
                             flood_log = TRUE,
-                            add_other_geog = FALSE,
+                            add_other_geog = FALSE, # If == TRUE, ONSPD must be loaded into env.
                             save_gpkg = TRUE,
                             gpkg_layer_name = "imed-lsoa")
 
@@ -103,6 +105,7 @@ make_climate_histograms(imed_lsoa)
 save_imed_xlsx(imed_lsoa)
 
 # make and save rural urban split of IMED deciles
+# Note: ONSPD needed for this
 imed_by_rurality <- make_lsoa_rumorph(onspd)
 
 # make map to check results

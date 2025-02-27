@@ -61,3 +61,7 @@ options(dplyr.summarise.inform = FALSE)
 if(!dir.exists("outputs")) {
   dir.create("outputs")
 }
+
+if(!dir.exists("outputs/histograms")) {
+  dir.create("outputs/histograms")
+}
