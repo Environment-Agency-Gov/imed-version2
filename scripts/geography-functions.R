@@ -34,8 +34,11 @@ join_msoa_la_region_to_lsoa_data <- function(lsoa_data) {
 # get lsoa boundaries, full extent, clipped to coastline
 get_lsoa_boundaries <- function(type = "full") {
   
+  # Define the root path
+  root_path <- "PATH_TO_LSOA"
+  
   if(type == "full") {
-    lsoa_boundaries <- st_read("../gis-data/boundaries/lsoa/LSOA_2011_EW_BFC_V3/LSOA_2011_EW_BFC_V3.shp",
+    lsoa_boundaries <- st_read(file.path(root_path, "/gis-data/boundaries/lsoa/LSOA_2011_EW_BFC_V3/LSOA_2011_EW_BFC_V3.shp"),
                                quiet = TRUE)  
     lsoa_boundaries <- lsoa_boundaries %>% 
       select(LSOA11CD,
