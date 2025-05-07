@@ -66,7 +66,8 @@
 # selecting clear_all = F will remove all objects except the ONSPD
 clear_all = TRUE
 source("scripts/set-up.R")
-
+#load_packages()
+load_scripts()
 # Load ONSPD (approx 45-60secs)
 # Note: This is needed if wanted to add geography columns to imed data set
 load_onspd = FALSE

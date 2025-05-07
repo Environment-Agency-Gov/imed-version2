@@ -4,27 +4,49 @@ if(clear_all) {
   rm(list = ls()[!grepl("onspd", ls())])
 }
 
-
 load_packages <- function() {
-  library(tidyverse)
-  library(openxlsx)
-  library(readODS)
-  library(sf)
-  library(tictoc)
-  library(tmap)
-  tmap_mode("view")
-  library(scales)
   
-  library(ncdf4)
-  library(PCICt)
+  library(pacman)
   
-  library(RColorBrewer)
-  library(extrafont)
+  packages <- c("tidyverse",
+                "openxlsx",
+                "readODS",
+                "sf",
+                "tictoc",
+                "tmap",
+                "scales",
+                "ncdf4",
+                "PCICt",
+                "RColorBrewer",
+                "extrafont",
+                "ggstatsplot")
   
-  library(ggstatsplot)
+  for (package in packages) {
+    if (!require(package, character.only = TRUE)) {
+      install.packages(package)
+      library(package, character.only = TRUE)
+    }
+  }
+  
+  # library(tidyverse)
+  # library(openxlsx)
+  # library(readODS)
+  # library(sf)
+  # library(tictoc)
+  # library(tmap)
+  # tmap_mode("view")
+  # library(scales)
+  # 
+  # library(ncdf4)
+  # library(PCICt)
+  # 
+  # library(RColorBrewer)
+  # library(extrafont)
+  # 
+  # library(ggstatsplot)
 }
 
-load_packages()
+#load_packages()
 
 load_scripts <- function() {
   
@@ -53,7 +75,7 @@ load_scripts <- function() {
 
 }
 
-load_scripts()
+#load_scripts()
 
 options(dplyr.summarise.inform = FALSE)
 
