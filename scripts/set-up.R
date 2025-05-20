@@ -6,8 +6,6 @@ if(clear_all) {
 
 load_packages <- function() {
   
-  library(pacman)
-  
   packages <- c("tidyverse",
                 "openxlsx",
                 "readODS",
